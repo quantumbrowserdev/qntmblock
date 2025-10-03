@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>QntmBlock</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../icons/icon.png" alt="Logo">
+            <h1>QntmBlock</h1>
+        </div>
+    </header>
+    <div class="settings">
+        <div class="setting-item">
+            <label>Ad Display</label>
+            <div class="radio-group">
+                <input type="radio" id="ad-display-blur" name="ad-display" value="blur">
+                <label for="ad-display-blur">Blur</label>
+                <input type="radio" id="ad-display-mask" name="ad-display" value="mask">
+                <label for="ad-display-mask">Mask</label>
+                <input type="radio" id="ad-display-off" name="ad-display" value="off">
+                <label for="ad-display-off">Off</label>
+            </div>
+        </div>
+
+        <div class="setting-item simple-toggle">
+            <label for="mute-enabled">Mute Ads</label>
+            <label class="switch">
+                <input type="checkbox" id="mute-enabled">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="setting-item simple-toggle">
+            <label for="speed-enabled">Speed Up Ads</label>
+            <label class="switch">
+                <input type="checkbox" id="speed-enabled">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="setting-item slider-item">
+            <label for="speed-multiplier">Speed Multiplier</label>
+            <div class="slider-container">
+                <input type="range" id="speed-multiplier" min="2" max="16" step="1">
+                <span id="speed-value" class="slider-value"></span>
+            </div>
+        </div>
+
+        <div class="setting-item simple-toggle">
+            <label for="beta-detection-enabled" class="label-with-tag">
+                New detection system
+                <span class="beta-tag">Beta</span>
+            </label>
+            <label class="switch">
+                <input type="checkbox" id="beta-detection-enabled">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="setting-item simple-toggle">
+            <label for="legit-mode-enabled" class="label-with-tag">
+                Legit Mode
+                <span class="beta-tag">Beta</span>
+            </label>
+            <label class="switch">
+                <input type="checkbox" id="legit-mode-enabled">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div id="randomize-container" class="setting-item simple-toggle" style="display: none;">
+            <label for="randomize-enabled">Randomize</label>
+            <label class="switch">
+                <input type="checkbox" id="randomize-enabled">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
