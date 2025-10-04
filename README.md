@@ -6,13 +6,12 @@ QntmBlock is a free, open-source browser extension that transforms your YouTube 
 
 QntmBlock is a free, open-source browser extension that transforms your YouTube ad experience. Instead of blocking ads, it blurs, mutes, speeds them up, and offers advanced detection evasion—making interruptions less harsh while still supporting creators.
 
-## Update v0.3
+## Update v0.4
 
-- All tests of experimental features are now complete.
-- Significant performance and detection improvements.
-- A major update is coming soon.
-- AI-powered automatic YouTube scanner is in development.
-- QntmBlock is now approved on the Firefox Add-ons Marketplace—thanks to the Firefox team!
+- Major performance and stability improvements have been implemented.
+- Overall enhancements to standard functions for more reliable ad handling.
+- New experimental ad detection methods have been added.
+- Exciting new features like the Dev Console, Script Executor, and a Canvas/Side-by-Side Player are being developed for the upcoming BIG update v1.0
 
 ## Core Features
 
