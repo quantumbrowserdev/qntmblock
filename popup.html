@@ -12,70 +12,124 @@
             <h1>QntmBlock</h1>
         </div>
     </header>
-    <div class="settings">
-        <div class="setting-item">
-            <label>Ad Display</label>
-            <div class="radio-group">
-                <input type="radio" id="ad-display-blur" name="ad-display" value="blur">
-                <label for="ad-display-blur">Blur</label>
-                <input type="radio" id="ad-display-mask" name="ad-display" value="mask">
-                <label for="ad-display-mask">Mask</label>
-                <input type="radio" id="ad-display-off" name="ad-display" value="off">
-                <label for="ad-display-off">Off</label>
+
+    <nav class="tabs">
+        <button class="tab-button active" data-tab="standard">Standard</button>
+        <button class="tab-button" data-tab="experimental">Experimental</button>
+        <button class="tab-button" data-tab="developer">Developer</button>
+    </nav>
+
+    <div class="tab-content">
+        <section id="tab-standard" class="settings active">
+            <div class="setting-item">
+                <label>Ad Display</label>
+                <div class="radio-group">
+                    <input type="radio" id="ad-display-blur" name="ad-display" value="blur">
+                    <label for="ad-display-blur">Blur</label>
+                    <input type="radio" id="ad-display-mask" name="ad-display" value="mask">
+                    <label for="ad-display-mask">Mask</label>
+                    <input type="radio" id="ad-display-off" name="ad-display" value="off">
+                    <label for="ad-display-off">Off</label>
+                </div>
             </div>
-        </div>
 
-        <div class="setting-item simple-toggle">
-            <label for="mute-enabled">Mute Ads</label>
-            <label class="switch">
-                <input type="checkbox" id="mute-enabled">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="setting-item simple-toggle">
-            <label for="speed-enabled">Speed Up Ads</label>
-            <label class="switch">
-                <input type="checkbox" id="speed-enabled">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="setting-item slider-item">
-            <label for="speed-multiplier">Speed Multiplier</label>
-            <div class="slider-container">
-                <input type="range" id="speed-multiplier" min="2" max="16" step="1">
-                <span id="speed-value" class="slider-value"></span>
+            <div class="setting-item simple-toggle">
+                <label for="mute-enabled">Mute Ads</label>
+                <label class="switch">
+                    <input type="checkbox" id="mute-enabled">
+                    <span class="slider"></span>
+                </label>
             </div>
-        </div>
 
-        <div class="setting-item simple-toggle">
-            <label for="beta-detection-enabled" class="label-with-tag">
-                New detection system
-            </label>
-            <label class="switch">
-                <input type="checkbox" id="beta-detection-enabled">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="setting-item simple-toggle">
+                <label for="speed-enabled">Speed Up Ads</label>
+                <label class="switch">
+                    <input type="checkbox" id="speed-enabled">
+                    <span class="slider"></span>
+                </label>
+            </div>
 
-        <div class="setting-item simple-toggle">
-            <label for="legit-mode-enabled" class="label-with-tag">
-                Legit Mode
-            </label>
-            <label class="switch">
-                <input type="checkbox" id="legit-mode-enabled">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="setting-item slider-item">
+                <label for="speed-multiplier">Speed Multiplier</label>
+                <div class="slider-container">
+                    <input type="range" id="speed-multiplier" min="2" max="32" step="1">
+                    <span id="speed-value" class="slider-value"></span>
+                </div>
+            </div>
 
-        <div id="randomize-container" class="setting-item simple-toggle" style="display: none;">
-            <label for="randomize-enabled">Randomize</label>
-            <label class="switch">
-                <input type="checkbox" id="randomize-enabled">
-                <span class="slider"></span>
-            </label>
-        </div>
+            <div class="setting-item simple-toggle">
+                <label for="auto-skip-enabled">AutoSkip (auto click skip)</label>
+                <label class="switch">
+                    <input type="checkbox" id="auto-skip-enabled">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item simple-toggle">
+                <label for="legit-mode-enabled" class="label-with-tag">Legit Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="legit-mode-enabled">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div id="randomize-container" class="setting-item simple-toggle" style="display: none;">
+                <label for="randomize-enabled">Randomize</label>
+                <label class="switch">
+                    <input type="checkbox" id="randomize-enabled">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </section>
+
+        <section id="tab-experimental" class="settings">
+            <div class="setting-item simple-toggle">
+                <label for="experimental-extra-detections">Extra Detections</label>
+                <label class="switch">
+                    <input type="checkbox" id="experimental-extra-detections">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-item simple-toggle">
+                <label>Canvas Overlay (experimental)</label>
+                <div class="label-wip">WIP</div>
+            </div>
+
+            <div class="setting-item simple-toggle">
+                <label>Use WebGL (if supported)</label>
+                <div class="label-wip">WIP</div>
+            </div>
+        </section>
+
+        <section id="tab-developer" class="settings">
+            <div class="setting-item simple-toggle">
+                <label>Dev Console (in-page)</label>
+                <div class="label-wip">WIP</div>
+            </div>
+
+            <div class="setting-item simple-toggle">
+                <label>Debug Logging</label>
+                <div class="label-wip">WIP</div>
+            </div>
+
+            <hr>
+
+            <div class="setting-item">
+                <label>Script Executor</label>
+            </div>
+            <div class="executor-container">
+                <div class="wip-overlay">WIP</div>
+                <div class="setting-item script-executor">
+                    <textarea id="executor-code" placeholder="// napište JS kód zde" rows="6"></textarea>
+                </div>
+                <div class="setting-item">
+                    <button id="executor-load">Load from file</button>
+                    <button id="executor-execute">Execute</button>
+                    <button id="executor-stop" style="display:none">Stop</button>
+                </div>
+            </div>
+        </section>
     </div>
     <script src="popup.js"></script>
 </body>

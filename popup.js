@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     const a = typeof browser === 'undefined' ? chrome : browser;
 
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabSections = document.querySelectorAll('.settings');
+
+    tabButtons.forEach(btn => btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.tab;
+        tabSections.forEach(s => s.classList.remove('active'));
+        const activeSection = document.getElementById(`tab-${target}`);
+        if (activeSection) activeSection.classList.add('active');
+    }));
+
     const adDisplayBlur = document.getElementById('ad-display-blur');
     const adDisplayMask = document.getElementById('ad-display-mask');
     const adDisplayOff = document.getElementById('ad-display-off');
@@ -12,20 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const legitModeEnabled = document.getElementById('legit-mode-enabled');
     const randomizeEnabled = document.getElementById('randomize-enabled');
     const randomizeContainer = document.getElementById('randomize-container');
+    const autoSkipEnabled = document.getElementById('auto-skip-enabled');
+    const experimentalExtraDetections = document.getElementById('experimental-extra-detections');
 
     function updateSpeedText(value) {
         speedValue.textContent = `${value}x`;
     }
 
     function toggleRandomizeVisibility() {
+        if (!randomizeContainer || !legitModeEnabled) return;
         randomizeContainer.style.display = legitModeEnabled.checked ? 'flex' : 'none';
     }
 
     function saveOptions() {
         let adDisplayMode = 'blur';
-        if (adDisplayMask.checked) {
+        if (adDisplayMask && adDisplayMask.checked) {
             adDisplayMode = 'mask';
-        } else if (adDisplayOff.checked) {
+        } else if (adDisplayOff && adDisplayOff.checked) {
             adDisplayMode = 'off';
         }
 
@@ -34,9 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
             muteEnabled: muteEnabled.checked,
             speedEnabled: speedEnabled.checked,
             speedMultiplier: parseInt(speedMultiplier.value, 10),
-            betaDetectionEnabled: betaDetectionEnabled.checked,
+            betaDetectionEnabled: betaDetectionEnabled ? betaDetectionEnabled.checked : false,
             legitModeEnabled: legitModeEnabled.checked,
             randomizeEnabled: randomizeEnabled.checked,
+            autoSkipEnabled: autoSkipEnabled.checked,
+            experimentalExtraDetections: experimentalExtraDetections ? experimentalExtraDetections.checked : false,
         };
         a.storage.sync.set(settings);
     }
@@ -50,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             betaDetectionEnabled: false,
             legitModeEnabled: false,
             randomizeEnabled: false,
+            autoSkipEnabled: true,
+            experimentalExtraDetections: false,
         };
         a.storage.sync.get(defaults, (items) => {
             if (items.adDisplayMode === 'mask') {
@@ -63,26 +82,29 @@ document.addEventListener('DOMContentLoaded', () => {
             speedEnabled.checked = items.speedEnabled;
             speedMultiplier.value = items.speedMultiplier;
             updateSpeedText(items.speedMultiplier);
-            betaDetectionEnabled.checked = items.betaDetectionEnabled;
+            if (betaDetectionEnabled) betaDetectionEnabled.checked = items.betaDetectionEnabled;
             legitModeEnabled.checked = items.legitModeEnabled;
             randomizeEnabled.checked = items.randomizeEnabled;
             toggleRandomizeVisibility();
+            autoSkipEnabled.checked = items.autoSkipEnabled;
+            if (experimentalExtraDetections) experimentalExtraDetections.checked = items.experimentalExtraDetections;
         });
     }
 
     restoreOptions();
 
-    adDisplayBlur.addEventListener('change', saveOptions);
-    adDisplayMask.addEventListener('change', saveOptions);
-    adDisplayOff.addEventListener('change', saveOptions);
-    muteEnabled.addEventListener('change', saveOptions);
-    speedEnabled.addEventListener('change', saveOptions);
-    speedMultiplier.addEventListener('change', saveOptions);
-    betaDetectionEnabled.addEventListener('change', saveOptions);
-    legitModeEnabled.addEventListener('change', saveOptions);
-    randomizeEnabled.addEventListener('change', saveOptions);
+    if (adDisplayBlur) adDisplayBlur.addEventListener('change', saveOptions);
+    if (adDisplayMask) adDisplayMask.addEventListener('change', saveOptions);
+    if (adDisplayOff) adDisplayOff.addEventListener('change', saveOptions);
+    if (muteEnabled) muteEnabled.addEventListener('change', saveOptions);
+    if (speedEnabled) speedEnabled.addEventListener('change', saveOptions);
+    if (speedMultiplier) speedMultiplier.addEventListener('change', saveOptions);
+    if (legitModeEnabled) legitModeEnabled.addEventListener('change', saveOptions);
+    if (randomizeEnabled) randomizeEnabled.addEventListener('change', saveOptions);
+    if (autoSkipEnabled) autoSkipEnabled.addEventListener('change', saveOptions);
+    if (experimentalExtraDetections) experimentalExtraDetections.addEventListener('change', saveOptions);
 
-    legitModeEnabled.addEventListener('change', toggleRandomizeVisibility);
+    if (legitModeEnabled) legitModeEnabled.addEventListener('change', toggleRandomizeVisibility);
 
-    speedMultiplier.addEventListener('input', () => updateSpeedText(speedMultiplier.value));
+    if (speedMultiplier) speedMultiplier.addEventListener('input', () => updateSpeedText(speedMultiplier.value));
 });

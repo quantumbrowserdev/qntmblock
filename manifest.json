@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "QntmBlock",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Blurs, mutes, and speeds up YouTube ads without blocking them.",
   "permissions": [
     "storage"
