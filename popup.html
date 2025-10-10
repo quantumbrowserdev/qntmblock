@@ -1,3 +1,14 @@
+<!-----------------------------------------------------------------------------------------------------
+// Copyright (c) 2025 Quantum Browser
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and limitations under the License.
+// ---------------------------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -8,8 +19,11 @@
 <body>
     <header>
         <div class="logo">
-            <img src="../icons/icon.png" alt="Logo">
-            <h1>QntmBlock</h1>
+            <img src="icons/icon.png" alt="QntmBlock logo">
+            <div class="title-wrap">
+                <h1>QntmBlock</h1>
+                <p class="subtitle">A smoother YouTube experience.</p>
+            </div>
         </div>
     </header>
 
@@ -19,114 +33,168 @@
         <button class="tab-button" data-tab="developer">Developer</button>
     </nav>
 
-    <div class="tab-content">
+    <div class="tab-content container">
         <section id="tab-standard" class="settings active">
-            <div class="setting-item">
-                <label>Ad Display</label>
-                <div class="radio-group">
-                    <input type="radio" id="ad-display-blur" name="ad-display" value="blur">
-                    <label for="ad-display-blur">Blur</label>
-                    <input type="radio" id="ad-display-mask" name="ad-display" value="mask">
-                    <label for="ad-display-mask">Mask</label>
-                    <input type="radio" id="ad-display-off" name="ad-display" value="off">
-                    <label for="ad-display-off">Off</label>
+
+            <div class="card">
+                <div class="setting-item">
+                    <div class="label-col">
+                        <label>Ad Display</label>
+                        <div class="subtext">Visual processing</div>
+                    </div>
+                    <div class="control-col">
+                        <div class="radio-group">
+                            <input type="radio" id="ad-display-blur" name="ad-display" value="blur">
+                            <label for="ad-display-blur">Blur</label>
+                            <input type="radio" id="ad-display-mask" name="ad-display" value="mask">
+                            <label for="ad-display-mask">Mask</label>
+                            <input type="radio" id="ad-display-off" name="ad-display" value="off">
+                            <label for="ad-display-off">Off</label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="setting-item simple-toggle">
-                <label for="mute-enabled">Mute Ads</label>
-                <label class="switch">
-                    <input type="checkbox" id="mute-enabled">
-                    <span class="slider"></span>
-                </label>
-            </div>
+            <div class="card">
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label for="mute-enabled">Mute Ads</label>
+                        <div class="subtext">Automatically mutes ads</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="mute-enabled">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-            <div class="setting-item simple-toggle">
-                <label for="speed-enabled">Speed Up Ads</label>
-                <label class="switch">
-                    <input type="checkbox" id="speed-enabled">
-                    <span class="slider"></span>
-                </label>
-            </div>
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label for="auto-skip-enabled">AutoSkip</label>
+                        <div class="subtext">Automatically skips ads when possible</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="auto-skip-enabled">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-            <div class="setting-item slider-item">
-                <label for="speed-multiplier">Speed Multiplier</label>
-                <div class="slider-container">
-                    <input type="range" id="speed-multiplier" min="2" max="32" step="1">
-                    <span id="speed-value" class="slider-value"></span>
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label for="speed-enabled">Speed Up Ads</label>
+                        <div class="subtext">Speeds up playback speed</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="speed-enabled">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item slider-item">
+                    <div class="label-col">
+                        <label for="speed-multiplier">Speed Multiplier</label>
+                        <div class="subtext">This is how many times the ad will speed up</div>
+                    </div>
+                    <div class="slider-container control-col">
+                        <input type="range" id="speed-multiplier" min="2" max="32" step="1">
+                        <span id="speed-value" class="slider-value"></span>
+                    </div>
                 </div>
             </div>
 
-            <div class="setting-item simple-toggle">
-                <label for="auto-skip-enabled">AutoSkip (auto click skip)</label>
-                <label class="switch">
-                    <input type="checkbox" id="auto-skip-enabled">
-                    <span class="slider"></span>
-                </label>
-            </div>
+            <div class="card">
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label for="legit-mode-enabled" class="label-with-tag">Legit Mode</label>
+                        <div class="subtext">Slows down processes so YouTube won't be able to detect you</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="legit-mode-enabled">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-            <div class="setting-item simple-toggle">
-                <label for="legit-mode-enabled" class="label-with-tag">Legit Mode</label>
-                <label class="switch">
-                    <input type="checkbox" id="legit-mode-enabled">
-                    <span class="slider"></span>
-                </label>
-            </div>
-
-            <div id="randomize-container" class="setting-item simple-toggle" style="display: none;">
-                <label for="randomize-enabled">Randomize</label>
-                <label class="switch">
-                    <input type="checkbox" id="randomize-enabled">
-                    <span class="slider"></span>
-                </label>
+                <div id="randomize-container" class="setting-item simple-toggle" style="display: none;">
+                    <div class="label-col">
+                        <label for="randomize-enabled">Randomize</label>
+                        <div class="subtext">Randomizes values (part of legit mode)</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="randomize-enabled">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
         </section>
 
         <section id="tab-experimental" class="settings">
-            <div class="setting-item simple-toggle">
-                <label for="experimental-extra-detections">Extra Detections</label>
-                <label class="switch">
-                    <input type="checkbox" id="experimental-extra-detections">
-                    <span class="slider"></span>
-                </label>
+            <div class="card">
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label for="experimental-extra-detections">Extra Detections</label>
+                        <div class="subtext">Additional experimental methods for ad detection</div>
+                    </div>
+                    <label class="switch control-col">
+                        <input type="checkbox" id="experimental-extra-detections">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
 
-            <div class="setting-item simple-toggle">
-                <label>Canvas Overlay (experimental)</label>
-                <div class="label-wip">WIP</div>
-            </div>
+            <div class="card">
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label>Canvas Overlay</label>
+                        <div class="subtext">Side-by-side ad player (plays video and ad at the same time)</div>
+                    </div>
+                    <div class="label-wip control-col">Soon</div>
+                </div>
 
-            <div class="setting-item simple-toggle">
-                <label>Use WebGL (if supported)</label>
-                <div class="label-wip">WIP</div>
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label>Use WebGL</label>
+                        <div class="subtext">Uses WebGL for acceleration (depends on browser)</div>
+                    </div>
+                    <div class="label-wip control-col">Soon</div>
+                </div>
             </div>
         </section>
 
         <section id="tab-developer" class="settings">
-            <div class="setting-item simple-toggle">
-                <label>Dev Console (in-page)</label>
-                <div class="label-wip">WIP</div>
-            </div>
-
-            <div class="setting-item simple-toggle">
-                <label>Debug Logging</label>
-                <div class="label-wip">WIP</div>
-            </div>
-
-            <hr>
-
-            <div class="setting-item">
-                <label>Script Executor</label>
-            </div>
-            <div class="executor-container">
-                <div class="wip-overlay">WIP</div>
-                <div class="setting-item script-executor">
-                    <textarea id="executor-code" placeholder="// your JS payload here" rows="6"></textarea>
+            <div class="card">
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label>Dev Console (in-page)</label>
+                        <div class="subtext">Output console inpage (good for Debug and Script Exec)</div>
+                    </div>
+                    <div class="label-wip control-col">Soon</div>
                 </div>
+
+                <div class="setting-item simple-toggle">
+                    <div class="label-col">
+                        <label>Debug Logging</label>
+                        <div class="subtext">Debug logs for each function for troubleshooting</div>
+                    </div>
+                    <div class="label-wip control-col">Soon</div>
+                </div>
+            </div>
+
+            <div class="card">
                 <div class="setting-item">
-                    <button id="executor-load">Load from file</button>
-                    <button id="executor-execute">Execute</button>
-                    <button id="executor-stop" style="display:none">Stop</button>
+                    <div class="label-col">
+                        <label>Script Executor</label>
+                        <div class="subtext">Allows running various JS payloads/scripts for developer community (using our API, which will be part of the executor, the community can update the extension for other websites as well)</div>
+                    </div>
+                </div>
+                <div class="executor-container">
+                    <div class="wip-overlay">Coming Soon</div>
+                    <div class="setting-item script-executor">
+                        <textarea id="executor-code" placeholder="// your JS payload here" rows="6" disabled></textarea>
+                    </div>
+                    <div class="setting-actions">
+                        <button id="executor-load" class="btn ghost" disabled>Load from file</button>
+                        <button id="executor-execute" class="btn primary" disabled>Execute</button>
+                        <button id="executor-stop" class="btn danger" disabled>Stop</button>
+                    </div>
                 </div>
             </div>
         </section>
